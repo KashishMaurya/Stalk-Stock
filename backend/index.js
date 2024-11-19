@@ -2,16 +2,43 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
+const cookieParser = require("cookie-parser");
+const { route } = require("./Routes/AuthRoute");
+const authRoute = require("./Routes/AuthRoute");
 
 const { HoldingsModel } = require("./models/HoldingsModel");
 const { PositionsModel } = require("./models/PositionsModel");
+const { OrdersModel } = require("./models/OrdersModel");
+const { User } = require("./models/UserModel");
+const { Signup } = require("./Controllers/AuthController");
+const { Login } = require("./Controllers/AuthController");
 
-const PORT = process.env.Port || 3002;
+const PORT = process.env.PORT || 3002;
 const url = process.env.MONGO_URL;
 
 const app = express();
 
+app.use(bodyParser.json());
+
+app.use(cookieParser());
+
+app.use(express.json());
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
+app.use("/", authRoute);
+
 //holdings data
+
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [
 //     {
@@ -140,8 +167,8 @@ const app = express();
 //   res.send("Done");
 // });
 
-
 // positions data
+
 // app.get("/addPositions", async (req, res) => {
 //   let tempPositions = [
 //     {
@@ -182,7 +209,37 @@ const app = express();
 //   res.send("Done");
 // });
 
+//api end-point to fetch data from db
+app.get("/allHoldings", async (req, res) => {
+  let allHoldings = await HoldingsModel.find({});
+  res.json(allHoldings);
+});
+
+app.get("/allPositions", async (req, res) => {
+  let allPositions = await PositionsModel.find({});
+  res.json(allPositions);
+});
+
+app.post("/newOrder", async (req, res) => {
+  let newOrder = new OrdersModel({
+    name: req.body.name,
+    qty: req.body.qty,
+    price: req.body.price,
+    mode: req.body.mode,
+  });
+  newOrder.save();
+  res.send("order saved");
+});
+
+// MongoDB connection (corrected url variable)
+mongoose
+  .connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB is  connected successfully"))
+  .catch((err) => console.error(err));
+
 app.listen(PORT, () => {
-  console.log("App started!!");
-  mongoose.connect(url);
+  console.log(`Server is listening on port ${PORT}`);
 });

@@ -6,7 +6,6 @@ import Pricing from "./Pricing";
 import Education from "./Education";
 import OpenAccount from "../OpenAccount";
 
-
 function HomePage() {
   return (
     <>
