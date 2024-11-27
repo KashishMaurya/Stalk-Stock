@@ -31,11 +31,9 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //
      if (!email || !password) {
        return handleError("Please fill in all fields.");
     }
-    //
      try {
        const { data } = await axios.post(
          "http://localhost:3002/login",
@@ -56,7 +54,7 @@ const Login = () => {
             password: "",
           });
          setTimeout(() => {
-           navigate("/");
+           navigate("/");   //!redirecting from here
          }, 1000);
        } else {
          handleError(message);

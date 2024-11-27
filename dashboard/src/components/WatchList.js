@@ -65,7 +65,7 @@ const WatchList = () => {
         })}
       </ul>
 
-      <DoughnutChart data={data} />
+      <DoughnutChart data={data} /> <br/><br/><br/>
     </div>
   );
 };

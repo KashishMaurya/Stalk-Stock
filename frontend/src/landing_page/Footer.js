@@ -8,14 +8,14 @@ function Footer() {
           {/* col-1 */}
           <div className="col">
             <img
-              src="/Images/logo.svg"
+              src="/Images/StalkStock.png"
               alt="logo"
-              style={{ width: "50%" }}
+              style={{ width: "70%" }}
               className="mb-3"
             />
             <p className="text-muted fs-6">
               <small>
-                &copy; 2010 - 2024, Zerodha Broking Ltd.
+                &copy; 2010 - 2024, Stalk Stock Broking Ltd.
                 <br /> All rights reserved.
               </small>
             </p>
@@ -45,7 +45,7 @@ function Footer() {
             </a>
             <br />
             <a href="" className="ft-link">
-              Zerodha.tech
+              Stalk_Stock.tech
             </a>
             <br />
             <a href="" className="ft-link">
@@ -53,7 +53,7 @@ function Footer() {
             </a>
             <br />
             <a href="" className="ft-link">
-              Zerodha Cares (CSR)
+              Stalk Stock Cares (CSR)
             </a>
             <br />
           </div>

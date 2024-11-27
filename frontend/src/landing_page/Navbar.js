@@ -7,7 +7,7 @@ function Navbar() {
       <div  className="container mb-2 mt-2">
         {/* logo */}
         <Link  className="navbar-brand" to="/">
-          <img src="/Images/logo.svg" alt="logo" style={{ width: "22%" }} />
+          <img src="/Images/StalkStock.png" alt="logo" style={{ width: "30%" }} />
         </Link>
 
         {/* toggler */}

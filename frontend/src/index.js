@@ -25,7 +25,7 @@ export {default as Home} from './landing_page/home/Home'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -40,5 +40,5 @@ root.render(
       </Routes>
       <Footer />
     </BrowserRouter>
-  // </React.StrictMode>
+  </React.StrictMode>
 );

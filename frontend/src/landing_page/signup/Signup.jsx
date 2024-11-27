@@ -10,7 +10,9 @@ const Signup = () => {
     password: "",
     username: "",
   });
+
   const { email, password, username } = inputValue;
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
@@ -38,12 +40,13 @@ const Signup = () => {
         },
         { withCredentials: true }
       );
-      
+
       const { success, message } = data;
+
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/");
+          navigate("/");      //!redirecting from here
         }, 1000);
       } else {
         handleError(message);
